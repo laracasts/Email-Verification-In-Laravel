@@ -34,7 +34,7 @@ class SessionsController extends Controller
     {
         $this->validate($request, ['email' => 'required|email', 'password' => 'required']);
 
-        if (Auth::attempt($this->getCredentials($request))) {
+        if ($this->signIn($request)) {
             flash('You are now confirmed. Please login.');
 
             return redirect()->intended('/dashboard');
@@ -57,6 +57,17 @@ class SessionsController extends Controller
         flash('You have now been signed out. See ya.');
 
         return redirect('login');
+    }
+
+    /**
+     * Attempt to sign in the user.
+     *
+     * @param  Request $request
+     * @return boolean
+     */
+    protected function signIn(Request $request)
+    {
+        return Auth::attempt($this->getCredentials($request), $request->has('remember'));
     }
 
     /**

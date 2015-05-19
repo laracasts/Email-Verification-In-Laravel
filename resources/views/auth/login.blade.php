@@ -18,6 +18,12 @@
             <input type="password" name="password" id="password" class="form-control">
         </div>
 
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? ' checked' : '' }}> Remember Me
+            </label>
+        </div>
+
         <div class="form-group">
             <button type="submit" class="btn btn-default">Sign In</button>
         </div>
