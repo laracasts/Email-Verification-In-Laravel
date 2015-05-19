@@ -7,6 +7,14 @@ use App\Http\Controllers\Controller;
 class SessionsController extends Controller
 {
     /**
+     * Create a new sessions controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
      * Show the login page.
      *
      * @return \Response

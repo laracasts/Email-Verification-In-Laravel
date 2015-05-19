@@ -8,6 +8,14 @@ use App\Http\Controllers\Controller;
 class RegistrationController extends Controller
 {
     /**
+     * Create a new registration instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
      * Show the register page.
      *
      * @return \Response
