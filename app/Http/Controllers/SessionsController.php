@@ -35,7 +35,7 @@ class SessionsController extends Controller
         $this->validate($request, ['email' => 'required|email', 'password' => 'required']);
 
         if ($this->signIn($request)) {
-            flash('You are now confirmed. Please login.');
+            flash('Welcome back!');
 
             return redirect()->intended('/dashboard');
         }
